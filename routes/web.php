@@ -29,5 +29,8 @@ Route::group(['namespace'=>'admin', 'prefix'=>'admin', 'as'=>'admin.'], function
        Route::get('/',[\App\Http\Controllers\admin\yayinevi\indexController::class, 'index'])->name('index');
        Route::get('/ekle',[\App\Http\Controllers\admin\yayinevi\indexController::class, 'create'])->name('create');
        Route::post('/ekle',[\App\Http\Controllers\admin\yayinevi\indexController::class, 'store'])->name('create.post');
+       Route::get('/duzenle/{id}',[\App\Http\Controllers\admin\yayinevi\indexController::class,'edit'])->name('edit');
+       Route::post('/duzenle/{id}',[\App\Http\Controllers\admin\yayinevi\indexController::class,'update'])->name('edit.post');
+       Route::get('/sil/{id}',[\App\Http\Controllers\admin\yayinevi\indexController::class,'delete'])->name('delete');
     });
 });

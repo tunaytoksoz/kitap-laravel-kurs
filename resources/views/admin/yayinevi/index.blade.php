@@ -28,13 +28,13 @@
                                     @foreach($data as $key => $value)
                                     <tr>
                                         <td>
-                                            {{$value['name']}}
+                                            {{$value->name}}
                                         </td>
                                         <td>
-                                            Düzenle
+                                            <a href="{{route('admin.yayinevi.edit',$value->id)}}">Düzenle</a>
                                         </td>
                                         <td>
-                                            Sil
+                                            <a href="{{route('admin.yayinevi.delete',$value->id)}}">Sil</a>
                                         </td>
                                     </tr>
                                     @endforeach
