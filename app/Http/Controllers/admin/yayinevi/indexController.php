@@ -12,7 +12,7 @@ class indexController extends Controller
     public function index()
     {
         $data = YayinEvi::paginate(10);
-        return view('admin.yayinevi.index',['data'=>$data]);
+        return view('admin.yayinevi.index',compact('data'));
     }
     public function create()
     {
@@ -35,8 +35,18 @@ class indexController extends Controller
 
     public function edit($id)
     {
-        $data = YayinEvi::where('id','=',$id)->get();
-        return view('admin.yayinevi.edit', compact('data'));
+        $c = YayinEvi::where('id','=',$id)->count();
+
+        if($c!=0)
+        {
+            $data = YayinEvi::where('id','=',$id)->get();
+            return view('admin.yayinevi.edit', compact('data'));
+        }
+        else
+        {
+            return redirect("/");
+        }
+
     }
     public function update(Request $request)
     {
