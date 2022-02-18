@@ -9,6 +9,7 @@ use App\Models\Kitaplar;
 use App\Models\YayinEvi;
 use App\Models\Yazarlar;
 use Illuminate\Http\Request;
+use File;
 
 class indexController extends Controller
 {
@@ -37,6 +38,67 @@ class indexController extends Controller
         else
         {
             return redirect()->back()->with('status','Kitap Eklenemedi.');
+        }
+    }
+
+    public function edit($id)
+    {
+        $control = Kitaplar::where('id','=',$id)->count();
+        $yazar = Yazarlar::all();
+        $yayinevi = YayinEvi::all();
+        if ($control!=0)
+            {
+                $data = Kitaplar::where('id','=',$id)->get();
+                return view('admin.kitap.edit',compact('data','yazar','yayinevi'));
+            }
+        else
+        {
+            return redirect("/");
+        }
+    }
+    public function update(Request $request)
+    {
+        $id = $request->route('id');
+        $control = Kitaplar::where('id','=',$id)->count();
+        if ($control!=0)
+        {
+            $data = Kitaplar::where('id','=',$id)->get();
+            $all = $request->except('_token');
+            $all['selflink'] = mHelper::permalink($all['name']);
+            $all['image'] = imageUpload::singleUploadUpdate(rand(1,9000),"kitap",$request->file('image'),$data,"image");
+
+            $update = Kitaplar::where('id','=',$id)->update($all);
+            if ($update)
+            {
+                return redirect()->back()->with('status','Kitap başarı ile güncellendi.');
+            }
+            else
+            {
+                return redirect()->back()->with('status','Kitap düzenlenemedi.');
+            }
+        }
+        else
+        {
+            return redirect("/");
+        }
+    }
+
+    public function delete($id)
+    {
+        $control = Kitaplar::where('id','=',$id)->count();
+
+        if ($control!=0)
+        {
+            $w = Kitaplar::where('id','=',$id)->get();
+            $bol = explode("/", $w[0]['image'], 4);
+            File::deleteDirectory(public_path("images/kitap/".$bol[2]));
+            Kitaplar::where('id','=',$id)->delete();
+            return redirect()->back();
+
+        }
+        else
+        {
+            return redirect('/');
         }
     }
 }
