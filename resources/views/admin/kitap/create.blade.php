@@ -58,6 +58,20 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group bmd-form-group">
+                                            <label class="bmd-label pb-1" style="position: initial">Kategori</label>
+                                            <select name="kategoriID" id="" class="form-control">
+                                                @foreach($kategori as $key => $value)
+                                                    <option value="{{$value->id}}"> {{$value->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group bmd-form-group">

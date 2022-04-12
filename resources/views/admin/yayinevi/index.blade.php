@@ -2,6 +2,7 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            <a href="{{route('admin.yayinevi.create')}}" class="btn btn-success">Yayınevi Ekle</a>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

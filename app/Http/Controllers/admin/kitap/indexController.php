@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin\kitap;
 use App\Helper\imageUpload;
 use App\Helper\mHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Kategoriler;
 use App\Models\Kitaplar;
 use App\Models\YayinEvi;
 use App\Models\Yazarlar;
@@ -22,7 +23,8 @@ class indexController extends Controller
     {
         $yazar = Yazarlar::all();
         $yayinevi = YayinEvi::all();
-        return view('admin.kitap.create', compact('yazar','yayinevi'));
+        $kategori = Kategoriler::all();
+        return view('admin.kitap.create', compact('yazar','yayinevi', 'kategori'));
     }
     public function store(Request $request)
     {
@@ -46,10 +48,11 @@ class indexController extends Controller
         $control = Kitaplar::where('id','=',$id)->count();
         $yazar = Yazarlar::all();
         $yayinevi = YayinEvi::all();
+        $kategori = Kategoriler::all();
         if ($control!=0)
             {
                 $data = Kitaplar::where('id','=',$id)->get();
-                return view('admin.kitap.edit',compact('data','yazar','yayinevi'));
+                return view('admin.kitap.edit',compact('data','yazar', 'yayinevi', 'kategori'));
             }
         else
         {

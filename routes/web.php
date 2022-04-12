@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\front\IndexController::class, 'index']);
 
 Auth::routes();
 
@@ -50,5 +48,14 @@ Route::group(['namespace'=>'admin', 'prefix'=>'admin', 'as'=>'admin.'], function
         Route::get('/duzenle/{id}',[\App\Http\Controllers\admin\kitap\indexController::class,'edit'])->name('edit');
         Route::post('/duzenle/{id}',[\App\Http\Controllers\admin\kitap\indexController::class,'update'])->name('edit.post');
         Route::get('/sil/{id}',[\App\Http\Controllers\admin\kitap\indexController::class,'delete'])->name('delete');
+    });
+
+    Route::group(['namespace'=>'kategori', 'prefix'=>'kategori', 'as'=>'kategori.'], function (){
+        Route::get('/',[\App\Http\Controllers\admin\kategori\indexController::class, 'index'])->name('index');
+        Route::get('/ekle',[\App\Http\Controllers\admin\kategori\indexController::class, 'create'])->name('create');
+        Route::post('/ekle',[\App\Http\Controllers\admin\kategori\indexController::class, 'store'])->name('create.post');
+        Route::get('/duzenle/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'edit'])->name('edit');
+        Route::post('/duzenle/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'update'])->name('edit.post');
+        Route::get('/sil/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'delete'])->name('delete');
     });
 });

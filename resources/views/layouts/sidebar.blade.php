@@ -8,51 +8,33 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active ">
-                <a class="nav-link" href="../examples/dashboard.html">
+                <a class="nav-link" href="{{route('admin.index')}}">
                     <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
+                    <p>Admin</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/user.html">
+                <a class="nav-link" href="{{route('admin.yayinevi.index')}}">
                     <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                    <p>Yayınevi</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/table.html">
+                <a class="nav-link" href="{{route('admin.yazar.index')}}">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>Yazarlar</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/typography.html">
+                <a class="nav-link" href="{{route('admin.kitap.index')}}">
                     <i class="material-icons">library_books</i>
-                    <p>Typography</p>
+                    <p>Kitaplar</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/icons.html">
+                <a class="nav-link" href="{{route('admin.kategori.index')}}">
                     <i class="material-icons">bubble_chart</i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="../examples/maps.html">
-                    <i class="material-icons">location_ons</i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="../examples/notifications.html">
-                    <i class="material-icons">notifications</i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro">
-                <a class="nav-link" href="../examples/upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
+                    <p>Kategoriler</p>
                 </a>
             </li>
         </ul>
