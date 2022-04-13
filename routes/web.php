@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\front\IndexController::class, 'index']);
+Route::get('/', [App\Http\Controllers\front\IndexController::class, 'index'])->name('index');
 
 Auth::routes();
 
@@ -57,5 +57,14 @@ Route::group(['namespace'=>'admin', 'prefix'=>'admin', 'as'=>'admin.'], function
         Route::get('/duzenle/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'edit'])->name('edit');
         Route::post('/duzenle/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'update'])->name('edit.post');
         Route::get('/sil/{id}',[\App\Http\Controllers\admin\kategori\indexController::class,'delete'])->name('delete');
+    });
+
+    Route::group(['namespace'=>'slider', 'prefix'=>'slider', 'as'=>'slider.'], function (){
+        Route::get('/',[\App\Http\Controllers\admin\slider\indexController::class, 'index'])->name('index');
+        Route::get('/ekle',[\App\Http\Controllers\admin\slider\indexController::class, 'create'])->name('create');
+        Route::post('/ekle',[\App\Http\Controllers\admin\slider\indexController::class, 'store'])->name('create.post');
+        Route::get('/duzenle/{id}',[\App\Http\Controllers\admin\slider\indexController::class,'edit'])->name('edit');
+        Route::post('/duzenle/{id}',[\App\Http\Controllers\admin\slider\indexController::class,'update'])->name('edit.post');
+        Route::get('/sil/{id}',[\App\Http\Controllers\admin\slider\indexController::class,'delete'])->name('delete');
     });
 });

@@ -37,6 +37,12 @@
                     <p>Kategoriler</p>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{route('admin.slider.index')}}">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Slider</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

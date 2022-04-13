@@ -2,13 +2,13 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
-            <a href="{{route('admin.yazar.create')}}" class="btn btn-success">Yazar Ekle</a>
+            <a href="{{route('admin.slider.create')}}" class="btn btn-success">Slider Ekle</a>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Yazarlar</h4>
-                            <p class="card-category">Burada mevcut yazarların listesini bulabilirsiniz.</p>
+                            <h4 class="card-title ">Slider</h4>
+                            <p class="card-category">Burada mevcut Slider listesini bulabilirsiniz.</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -16,7 +16,7 @@
                                     <thead class=" text-primary">
                                     <tr>
                                         <th>
-                                            İsim
+                                            Önizleme
                                         </th>
                                         <th>
                                             Düzenle
@@ -27,17 +27,17 @@
                                     </tr></thead>
                                     <tbody>
                                     @foreach($data as $key => $value)
-                                        <tr>
-                                            <td>
-                                                {{$value->name}}
-                                            </td>
-                                            <td>
-                                                <a href="{{route('admin.yazar.edit',$value->id)}}">Düzenle</a>
-                                            </td>
-                                            <td>
-                                                <a href="{{route('admin.yazar.delete',$value->id)}}">Sil</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            {{$value->image}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.slider.edit',$value->id)}}" style="width: 120px;height: 120px;">Düzenle</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.slider.delete',$value->id)}}">Sil</a>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
