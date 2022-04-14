@@ -82,7 +82,7 @@
                     @foreach($chunk as $key => $value)
                     <div class="col-md-3 product-left">
                         <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" style="height: 200px; width: 200px;" src="{{asset($value->image)}}" alt="" /></a>
+                            <a href="{{route('kitap.detay',['selflink'=>$value->selflink])}}" class="mask"><img class="img-responsive zoom-img" style="height: 200px; width: 200px;" src="{{asset($value->image)}}" alt="" /></a>
                             <div class="product-bottom">
                                 <h3>{{$value->name}}</h3>
                                 <p>{{\App\Models\Yazarlar::getField($value->yazarID,"name")}}</p>

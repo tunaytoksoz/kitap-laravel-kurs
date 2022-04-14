@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\front\IndexController::class, 'index'])->name('index');
+Route::get('/kitap/detay/{selflink}', [App\Http\Controllers\front\kitap\IndexController::class, 'index'])->name('kitap.detay');
 
 Auth::routes();
 
