@@ -40,7 +40,7 @@ class IndexController extends Controller
     public function edit($id)
     {
         $data = Slider::Where('id','=',$id)->get();
-        return view('admin.slider.update',compact('data'));
+        return view('admin.slider.edit',compact('data'));
     }
 
     public function update(Request $request)

@@ -29,21 +29,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-header-main">
             <div class="col-md-6 top-header-left">
                 <div class="drop">
+
+                    @auth()
+                        <div class="box">
+                            <a href="#" style="color: #fff">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                        </div>
+                        <div class="box">
+                            <a onclick="event.preventDefault();document.getElementById('logout-form').submit()" href="{{route('logout')}}" style="color: #fff">Çıkış Yap</a>
+                            <form action="{{route('logout')}}" id="logout-form" method="POST">
+                                @csrf
+                            </form>
+                        </div>
+                    @endauth
+
+                    @guest()
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
-                            <option value="" class="label">Dollar :</option>
-                            <option value="1">Dollar</option>
-                            <option value="2">Euro</option>
-                        </select>
+                        <a href="{{route('login')}}" style="color: #fff">Giriş Yap</a>
                     </div>
                     <div class="box1">
-                        <select tabindex="4" class="dropdown">
-                            <option value="" class="label">English :</option>
-                            <option value="1">English</option>
-                            <option value="2">French</option>
-                            <option value="3">German</option>
-                        </select>
+                        <a href="{{route('register')}}" style="color: #fff">Kayıt Ol</a>
                     </div>
+                    @endguest
                     <div class="clearfix"></div>
                 </div>
             </div>
